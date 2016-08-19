@@ -2,7 +2,7 @@ $(function(){
 
 	var socket = io();
   var m = $("<li class='l'>");
-  var li = $('.l');
+  var li = $('ul').find('.l');
   var em = null;
   var l = null;
   var dm = null;
@@ -14,14 +14,18 @@ $(function(){
     return false;
   });
 
-  $(m)
-  .mouseenter(function(e){
+  $('ul').on('click', '.l', function(){
+    console.log('hi');
+  });
+
+  $('ul').on('mouseenter', '.l', 
+    function(e){
     em = $(this).text();
 
     console.log('in ', em);
     decryptMsg(em);
   })
-  .mouseleave(function(e){
+  .on('mouseleave', '.l', function(e){
     console.log('out');
   });
 
