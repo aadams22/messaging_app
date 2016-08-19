@@ -17,8 +17,8 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-require('./config/encryption.js')(crypto);
-require('./config/sockets.js')(app, http, io);
+// require('./config/encryption.js')(crypto);
+require('./config/sockets.js')(app, http, io, crypto);
 
 
 http.listen(port, function(){
