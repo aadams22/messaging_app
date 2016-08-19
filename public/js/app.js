@@ -50,7 +50,9 @@ $(function(){
 //SOCKETS
 //======================
   socket.on('Chat Message', function(msg){
+    //sets li with inner text of chat message
     $('#messages').append(m.text(msg));
+    //resets value of m
     m = $("<li class='l'>");
   });
 
