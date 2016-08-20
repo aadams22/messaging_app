@@ -3,17 +3,25 @@ $(function(){
 //======================
 //VARIABLE DEFINITIONS
 //======================
-	var socket = io();
-  var m      = $("<li class='l'>");
-  var l      = null;
-  var em     = null;
-  var dm     = null;
-
+	var socket  = io();
+  var m       = $("<li class='l'>");
+  var l       = null;
+  var em      = null;
+  var dm      = null;
+  var clients = [];
 
 //======================
 //FUNCTIONALITY
 //======================
-  $('form').submit(function(){
+  $('#overlay > form').submit(function(e){
+    event.preventDefault();
+    console.log('submitted');
+    var username = $(this).children().val();
+    console.log('value is: ', username);
+  });
+
+
+  $('section > form').submit(function(){
     //sends value of user entered text to backend over ws to be encrypted and submitted 
     socket.emit('Chat Message', $('#m').val());
     //resets value of submition input to empty;
