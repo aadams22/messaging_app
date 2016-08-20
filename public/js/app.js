@@ -3,21 +3,23 @@ $(function(){
 //======================
 //VARIABLE DEFINITIONS
 //======================
-	var socket  = io();
-  var m       = $("<li class='l'>");
-  var l       = null;
-  var em      = null;
-  var dm      = null;
-  var clients = [];
+	var socket      = io();
+  var m           = $("<li class='l'>");
+  var l           = null;
+  var em          = null;
+  var dm          = null;
+  var overlay     = true;
+  var usn         = null;
+
 
 //======================
 //FUNCTIONALITY
 //======================
   $('#overlay > form').submit(function(e){
     event.preventDefault();
-    console.log('submitted');
-    var username = $(this).children().val();
-    console.log('value is: ', username);
+    usn = $(this).children().val();
+    socket.emit('Current User', usn);
+    $('h1').text(usn);
   });
 
 
@@ -53,13 +55,39 @@ $(function(){
   function decryptMsg(em){
     socket.emit('Decrypt Message', em);
   };
-  
+
+  //creates userlist on login
+  function createUserList(users){
+
+    //!!still getting multiple copies of the same username
+    for (var i = 0; i < users.length; i++) {
+      if ( $('ul').find(users[i].socketId).length == 0) {
+        $("#online-users").append("<li id='" + users[i].socketId + "'>" + users[i].username + "</li>");
+      }
+
+    };
+
+    //removes overlay the first time allowing for useage;
+    if (overlay) {
+      $('#overlay > form > input').val('');
+      $('#overlay').slideUp(500);
+      overlay = false;
+    }
+
+  };
+
+
 //======================
 //SOCKETS
 //======================
+  socket.on('Update Online Users', function(users) {
+    console.log(users);
+    createUserList(users);
+  });
+
   socket.on('Chat Message', function(msg){
     //sets li with inner text of chat message
-    $('#messages').append(m.text(msg));
+    $('#messages').append(m.text(usn + ": " + msg));
     //resets value of m
     m = $("<li class='l'>");
   });
@@ -68,5 +96,6 @@ $(function(){
     //sets inner of hovered li to decrypted text
     l.text(dm);
   });
+
 
 });
