@@ -20,9 +20,9 @@ module.exports = function(app, http, io) {
 			updateOnlineUsers(onlineUsers);
 		});
 
-		socket.on('Chat Message', function(msg){
+		socket.on('Chat Message', function(username, msg){
 			em = e(key, msg);
-			io.emit('Chat Message', em);
+			io.emit('Chat Message', username, em);
 			em = null;
 		});
 
@@ -34,12 +34,12 @@ module.exports = function(app, http, io) {
 
 		socket.on('disconnect', function(){
 			console.log('user disconnected ', socket.id);
-			// for (var i = 0; i < onlineUsers.length; i++) {
-			// 	if (onlineUsers[i].socketId == socket.id) {
-			// 		$.grep(onlineUser[i]);
-			// 		return onlineUser;
-			// 	}
-			// };
+			for (var i = 0; i < onlineUsers.length; i++) {
+				if (onlineUsers[i].socketId == socket.id) {
+					$.grep(onlineUser[i]);
+					return onlineUser;
+				}
+			};
 		});
 
 		function emitDecrypted(dm) {

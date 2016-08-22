@@ -19,6 +19,7 @@ $(function(){
     event.preventDefault();
     usn = $(this).children().val();
     console.log('this is usn: ', usn);
+    socket.username = usn;
     socket.emit('Current User', usn);
     $('h1').text(usn);
   });
@@ -26,7 +27,7 @@ $(function(){
 
   $('section > form').submit(function(){
     //sends value of user entered text to backend over ws to be encrypted and submitted 
-    socket.emit('Chat Message', $('#m').val());
+    socket.emit('Chat Message', socket.username, $('#m').val());
     //resets value of submition input to empty;
     $('#m').val('');
     return false;
@@ -85,9 +86,9 @@ $(function(){
     createUserList(users);
   });
 
-  socket.on('Chat Message', function(msg){
+  socket.on('Chat Message', function(username, msg){
     //sets li with inner text of chat message
-    $('#messages').append(m.text(usn + ": " + msg));
+    $('#messages').append(m.text(username + ": " + msg));
     //resets value of m
     m = $("<li class='l'>");
   });
