@@ -8,6 +8,9 @@ module.exports = function(app, http, io) {
 	var em = null;
 
 	var onlineUsers = [];
+
+
+	// console.log(d(key, e(key, 'this is now decrypted')));
 	
 	io.on('connection', function(socket){
 
@@ -20,21 +23,23 @@ module.exports = function(app, http, io) {
 		socket.on('Chat Message', function(msg){
 			em = e(key, msg);
 			io.emit('Chat Message', em);
+			em = null;
 		});
 
 		socket.on('Decrypt Message', function(msg){
 			dm = d(key, msg);
+			console.log('this is dm: ', dm);
 			emitDecrypted(dm); 
 		});
 
 		socket.on('disconnect', function(){
 			console.log('user disconnected ', socket.id);
-			for (var i = 0; i < onlineUsers.length; i++) {
-				if (onlineUsers[i].socketId == socket.id) {
-					$.grep(onlineUser[i]);
-					return onlineUser;
-				}
-			};
+			// for (var i = 0; i < onlineUsers.length; i++) {
+			// 	if (onlineUsers[i].socketId == socket.id) {
+			// 		$.grep(onlineUser[i]);
+			// 		return onlineUser;
+			// 	}
+			// };
 		});
 
 		function emitDecrypted(dm) {

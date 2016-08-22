@@ -10,7 +10,7 @@ $(function(){
   var dm          = null;
   var overlay     = true;
   var usn         = null;
-
+  var text        = null;
 
 //======================
 //FUNCTIONALITY
@@ -18,6 +18,7 @@ $(function(){
   $('#overlay > form').submit(function(e){
     event.preventDefault();
     usn = $(this).children().val();
+    console.log('this is usn: ', usn);
     socket.emit('Current User', usn);
     $('h1').text(usn);
   });
@@ -53,7 +54,8 @@ $(function(){
 //======================
   //sends encrypted value over hovered item to backend to be decrypted
   function decryptMsg(em){
-    socket.emit('Decrypt Message', em);
+    //removes username from hovered message
+    socket.emit('Decrypt Message', em.split(":")[1].trim());
   };
 
   //creates userlist on login
@@ -79,7 +81,7 @@ $(function(){
 //SOCKETS
 //======================
   socket.on('Update Online Users', function(users) {
-    console.log(users);
+    // console.log(users);
     createUserList(users);
   });
 
@@ -91,8 +93,11 @@ $(function(){
   });
 
   socket.on('Recieve Decrypted Msg', function(dm){
+    console.log(); 
+    l.text(em.split(":")[0].trim() + ": " + dm);
+
     //sets inner of hovered li to decrypted text
-    l.text(dm);
+    console.log('this is frontend dm: ', dm);
   });
 
 

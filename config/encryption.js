@@ -22,5 +22,5 @@ exports.decrypt = function(key, data) {
 
 
 
-// decrypt(key, encrypt(key, 'this is now decrypted'));
+
 
