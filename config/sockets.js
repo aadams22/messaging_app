@@ -20,9 +20,9 @@ module.exports = function(app, http, io) {
 			updateOnlineUsers(onlineUsers);
 		});
 
-		socket.on('Chat Message', function(username, msg){
+		socket.on('Chat Message', function(usn, msg){
 			em = e(key, msg);
-			io.emit('Chat Message', username, em);
+			io.emit('Chat Message', usn, em);
 			em = null;
 		});
 
