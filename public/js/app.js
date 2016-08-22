@@ -58,13 +58,11 @@ $(function(){
 
   //creates userlist on login
   function createUserList(users){
-
     //!!still getting multiple copies of the same username
     for (var i = 0; i < users.length; i++) {
       if ( $('ul').find(users[i].socketId).length == 0) {
         $("#online-users").append("<li id='" + users[i].socketId + "'>" + users[i].username + "</li>");
       }
-
     };
 
     //removes overlay the first time allowing for useage;
