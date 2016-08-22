@@ -93,11 +93,8 @@ $(function(){
   });
 
   socket.on('Recieve Decrypted Msg', function(dm){
-    console.log(); 
-    l.text(em.split(":")[0].trim() + ": " + dm);
-
     //sets inner of hovered li to decrypted text
-    console.log('this is frontend dm: ', dm);
+    l.text(em.split(":")[0].trim() + ": " + dm);
   });
 
 
