@@ -28,7 +28,6 @@ module.exports = function(app, http, io) {
 
 		socket.on('Decrypt Message', function(msg){
 			dm = d(key, msg);
-			console.log('this is dm: ', dm);
 			emitDecrypted(dm); 
 		});
 
