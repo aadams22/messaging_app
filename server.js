@@ -6,8 +6,8 @@ var express        = require('express'),
     port           = process.env.PORT || 8080,
     app            = express();
 
-var http					 = require('http').Server(app),
-		io						 = require('socket.io')(http);
+var http           = require('http').Server(app),
+    io             = require('socket.io')(http);
 
 
 var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/messagingapp'
@@ -21,5 +21,5 @@ require('./config/sockets.js')(app, http, io);
 
 
 http.listen(port, function(){
-	console.log('hello world');
+  console.log('hello world');
 });

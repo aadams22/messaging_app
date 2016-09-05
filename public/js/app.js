@@ -3,7 +3,7 @@ $(function(){
 //======================
 //VARIABLE DEFINITIONS
 //======================
-	var socket      = io();
+  var socket      = io();
   var m           = $("<li class='l'>");
   var l           = null;
   var em          = null;

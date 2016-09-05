@@ -15,6 +15,7 @@ Enigmatic is an encrypted private messaging web application that allows the user
 
 
 Current Build Includs:
+* Developing an online users list
 * Both Facebook login and local authentication will be required for login
 * Allow for chats with offline users
 * Private namespaces

@@ -1,62 +1,62 @@
 * { 
-	margin: 0; 
-	padding: 0; 
-	box-sizing: border-box; 
-	font-family:'Hind', sans-serif;
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+  font-family:'Hind', sans-serif;
 }
 
 #overlay {
-	position: fixed;
-	z-index: 5;
-	background-color: #d86b84;
-	height: 100%; width: 100%;
-	opacity: .8;
+  position: fixed;
+  z-index: 5;
+  background-color: #d86b84;
+  height: 100%; width: 100%;
+  opacity: .8;
 }
 
 #overlay > form > input {
-	height: 6%; width: 30%;
-	padding: 1em;
-	background-color: #e8a8b6;
-	border: none;
-	margin: 40%;
-	font-size: 1em;
+  height: 6%; width: 30%;
+  padding: 1em;
+  background-color: #e8a8b6;
+  border: none;
+  margin: 40%;
+  font-size: 1em;
 }
 
-section:nth-of-type(1)	{
-	float: left;
-	height: 100%; width: 30%;
-	background-color: #6b84d8;
-	padding: .5em;
-	border-right: 1px solid #e4d9e5;
+section:nth-of-type(1)  {
+  float: left;
+  height: 100%; width: 30%;
+  background-color: #6b84d8;
+  padding: .5em;
+  border-right: 1px solid #e4d9e5;
 }
-section:nth-of-type(2)	{
-	float: right;
-	margin-top: 0; width: 70%;
+section:nth-of-type(2)  {
+  float: right;
+  margin-top: 0; width: 70%;
 }
 
 h2 {
-	font-size: 1.25em;
-	border-bottom: 1px solid #84d86b;
+  font-size: 1.25em;
+  border-bottom: 1px solid #84d86b;
 }
 
 section > form { 
-	font-size: 13px; 
-	background: #c1c4cb;
-	padding: 3px; 
-	position: fixed; 
-	bottom: 0; 
-	width: 86%; 
+  font-size: 13px; 
+  background: #c1c4cb;
+  padding: 3px; 
+  position: fixed; 
+  bottom: 0; 
+  width: 86%; 
 }
 
 section > form input { 
-	border: 0; 
-	padding: 12px; 
-	width: 81%; 
+  border: 0; 
+  padding: 12px; 
+  width: 81%; 
 }
 
 #messages { 
-	margin: 0; 
-	padding: 0; 
+  margin: 0; 
+  padding: 0; 
 }
 
 #messages li { padding: 5px 10px; }
@@ -66,5 +66,5 @@ li { list-style-type: none; }
 
 /*HOVER*/
 input:hover {
-	background: #ecedef;
+  background: #ecedef;
 }
